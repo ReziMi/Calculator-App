@@ -44,28 +44,79 @@ function updateDisplay() {
 }
 
 
-document.getElementById('toggle').addEventListener('input', function() {
-    var selectedStyleIndex = this.value;
-    var stylesheetTitle = 'Styles' + selectedStyleIndex;
-    var existingStylesheet = document.querySelector('link[title="' + stylesheetTitle + '"]');
-    
-    // Create or update the link element
-    var linkElement = existingStylesheet || document.createElement('link');
-    
-    // Set attributes for the link element
-    linkElement.rel = 'stylesheet';
-    linkElement.href = 'styles' + selectedStyleIndex + '.css';
-    linkElement.title = stylesheetTitle;
-    
-    // If it's a new link element, append it to the head
-    if (!existingStylesheet) {
-        document.head.appendChild(linkElement);
-    } else {
-        // Toggle the disabled property to enable/disable the stylesheet
-        linkElement.disabled = !linkElement.disabled;
-    }
-    
+document.addEventListener("DOMContentLoaded", function () {
+    // Get the range input element
+    let themeRange = document.getElementById("toggle");
+
+    // Add an event listener to the range input
+    themeRange.addEventListener("input", function () {
+        // Get the selected value of the range input
+        let selectedTheme = themeRange.value;
+
+        // Get elements by class name
+        let bodyElement = document.body;
+        let calcElement = document.querySelector('.calc');
+        let themeElement = document.querySelector('.theme');
+        let numsElement = document.querySelector('.nums');
+        let rangeElement = document.querySelector('.range');
+        let dialElement = document.querySelector('.dial');
+        let calculatorGridElement = document.querySelector('.calculator-grid');
+        let delElement = document.querySelector('.del');
+        let calculatorButtonElements = document.querySelectorAll('.calculator-grid button');
+        let resetElement = document.querySelector('.reset');
+        let equalSignElement = document.querySelector('.equalSign');
+        let resetActiveElement = document.querySelector('.reset:active');
+        let equalSignActiveElement = document.querySelector('.equalSign:active');
+
+
+        // Add the selected theme class
+        if (selectedTheme === '2') {               
+            bodyElement.classList.add('style2');
+            calcElement.classList.add('style2');
+            themeElement.classList.add('style2');
+            numsElement.classList.add('style2');
+            rangeElement.classList.add('style2');
+            dialElement.classList.add('style2');
+            calculatorGridElement.classList.add('style2');
+            delElement.classList.add('style2');
+            calculatorButtonElements.forEach(button => button.classList.add('style2'));
+            resetElement.classList.add('style2');
+            equalSignElement.classList.add('style2');
+            resetActiveElement.classList.add('style2');
+            equalSignActiveElement.classList.add('style2');
+        } else if (selectedTheme === '3') {
+            bodyElement.classList.add('style3');
+            calcElement.classList.add('style3');
+            themeElement.classList.add('style3');
+            numsElement.classList.add('style3');
+            rangeElement.classList.add('style3');
+            dialElement.classList.add('style3');
+            calculatorGridElement.classList.add('style3');
+            delElement.classList.add('style3');
+            calculatorButtonElements.forEach(button => button.classList.add('style3'));
+            resetElement.classList.add('style3');
+            equalSignElement.classList.add('style3');
+            resetActiveElement.classList.add('style3');
+            equalSignActiveElement.classList.add('style3');
+        }else{
+            // Remove any theme classes that might have been added before
+            bodyElement.classList.remove('style2', 'style3');
+            calcElement.classList.remove('style2', 'style3');
+            themeElement.classList.remove('style2', 'style3');
+            numsElement.classList.remove('style2', 'style3');
+            rangeElement.classList.remove('style2', 'style3');
+            dialElement.classList.remove('style2', 'style3');
+            calculatorGridElement.classList.remove('style2', 'style3');
+            delElement.classList.remove('style2', 'style3');
+            calculatorButtonElements.forEach(button => button.classList.remove('style2', 'style3'));
+            resetElement.classList.remove('style2', 'style3');
+            equalSignElement.classList.remove('style2', 'style3');
+            resetActiveElement.classList.remove('style2', 'style3');
+            equalSignActiveElement.classList.remove('style2', 'style3');
+        }
+    });
 });
+
 
 
 
